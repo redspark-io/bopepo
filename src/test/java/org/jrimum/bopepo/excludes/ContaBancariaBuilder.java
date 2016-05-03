@@ -33,6 +33,7 @@ package org.jrimum.bopepo.excludes;
 import org.jrimum.bopepo.BancosSuportados;
 import org.jrimum.domkee.financeiro.banco.febraban.Agencia;
 import org.jrimum.domkee.financeiro.banco.febraban.Carteira;
+import org.jrimum.domkee.financeiro.banco.febraban.CodigoCedente;
 import org.jrimum.domkee.financeiro.banco.febraban.ContaBancaria;
 import org.jrimum.domkee.financeiro.banco.febraban.NumeroDaConta;
 
@@ -58,6 +59,7 @@ public class ContaBancariaBuilder {
 	private static ContaBancaria newDefaultValue(){
 		ContaBancaria conta = new ContaBancaria(BancosSuportados.BANCO_BRADESCO.create());
 		conta.setNumeroDaConta(new NumeroDaConta(123456, "0"));
+		conta.setCodigoCedente(new CodigoCedente(123456, "0"));
 		conta.setCarteira(new Carteira(30));
 		conta.setAgencia(new Agencia(1234, "1"));
 		

@@ -100,8 +100,8 @@
 				<configuration>
 					<descriptors>
 						<descriptor>src/main/assembly/jrimum-bopepo-with-dependencies.xml</descriptor>
-                        <descriptor>src/main/assembly/jrimum-bopepo-with-dependencies-src.xml</descriptor>
-                        <descriptor>src/main/assembly/jrimum-bopepo-examples.xml</descriptor>
+<!--                         <descriptor>src/main/assembly/jrimum-bopepo-with-dependencies-src.xml</descriptor> -->
+<!--                         <descriptor>src/main/assembly/jrimum-bopepo-examples.xml</descriptor> -->
                     </descriptors>
 				</configuration>
 				<executions>
@@ -143,26 +143,26 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.9.1</version>
-				<executions>
-					<execution>
-						<id>attach-javadoc</id>
-						<phase>package</phase>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-				 <configuration>
-			        <charset>UTF-8</charset>
-					<docencoding>UTF-8</docencoding>
-					<docfilessubdirs>true</docfilessubdirs>
-					<show>private</show>
-		    	</configuration>
-			</plugin>
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
+<!-- 				<artifactId>maven-javadoc-plugin</artifactId> -->
+<!-- 				<version>2.9.1</version> -->
+<!-- 				<executions> -->
+<!-- 					<execution> -->
+<!-- 						<id>attach-javadoc</id> -->
+<!-- 						<phase>package</phase> -->
+<!-- 						<goals> -->
+<!-- 							<goal>jar</goal> -->
+<!-- 						</goals> -->
+<!-- 					</execution> -->
+<!-- 				</executions> -->
+<!-- 				 <configuration> -->
+<!-- 			        <charset>UTF-8</charset> -->
+<!-- 					<docencoding>UTF-8</docencoding> -->
+<!-- 					<docfilessubdirs>true</docfilessubdirs> -->
+<!-- 					<show>private</show> -->
+<!-- 		    	</configuration> -->
+<!-- 			</plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-deploy-plugin</artifactId>

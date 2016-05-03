@@ -71,20 +71,20 @@ public class BoletoInfoCampoAgenciaCodigoCedente {
 			}
 		}
 		
-		if(isNotNull(conta.getNumeroDaConta())){
+		if(isNotNull(conta.getCodigoCedente())){
 		
 			if(temAgencia){
 				texto.append(" / ");
 			}
 
-			if (isNotNull(conta.getNumeroDaConta().getCodigoDaConta())) {
+			if (isNotNull(conta.getCodigoCedente().getCodigoCedente())) {
 	
-				texto.append(conta.getNumeroDaConta().getCodigoDaConta());
+				texto.append(conta.getCodigoCedente().getCodigoCedente());
 	
-				if (isNotBlank(conta.getNumeroDaConta().getDigitoDaConta())) {
+				if (isNotBlank(conta.getCodigoCedente().getDigitoCedente())) {
 	
 					texto.append("-");
-					texto.append(conta.getNumeroDaConta().getDigitoDaConta());
+					texto.append(conta.getCodigoCedente().getDigitoCedente());
 				}
 			}
 		}

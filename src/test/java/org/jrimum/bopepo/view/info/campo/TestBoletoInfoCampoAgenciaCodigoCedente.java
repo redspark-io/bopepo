@@ -32,12 +32,12 @@ package org.jrimum.bopepo.view.info.campo;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.jrimum.bopepo.view.info.campo.BoletoInfoCampoAgenciaCodigoCedente.getTextoAgenciaCodigoCedente;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 import org.jrimum.bopepo.excludes.ContaBancariaBuilder;
 import org.jrimum.domkee.financeiro.banco.febraban.Agencia;
+import org.jrimum.domkee.financeiro.banco.febraban.CodigoCedente;
 import org.jrimum.domkee.financeiro.banco.febraban.ContaBancaria;
-import org.jrimum.domkee.financeiro.banco.febraban.NumeroDaConta;
 import org.junit.Test;
 
 /**
@@ -45,52 +45,57 @@ import org.junit.Test;
  */
 public class TestBoletoInfoCampoAgenciaCodigoCedente {
 
-	@Test
-	public void deve_retornar_agencia_com_dv_e_numero_da_conta_com_dv(){
-		ContaBancaria conta = ContaBancariaBuilder.defaultValue();
-		
-		assertThat(getTextoAgenciaCodigoCedente(conta), equalTo("1234-1 / 123456-0"));
-	}
+  @Test
+  public void deve_retornar_agencia_com_dv_e_numero_da_conta_com_dv() {
+    ContaBancaria conta = ContaBancariaBuilder.defaultValue();
 
-	@Test
-	public void deve_retornar_agencia_sem_dv_e_numero_da_conta_com_dv(){
-		ContaBancaria conta = ContaBancariaBuilder.defaultValue();
-		conta.setAgencia(new Agencia(conta.getAgencia().getCodigo()));
-		
-		assertThat(getTextoAgenciaCodigoCedente(conta), equalTo("1234 / 123456-0"));
-	}
+    assertThat(getTextoAgenciaCodigoCedente(conta), equalTo("1234-1 / 123456-0"));
+  }
 
-	@Test
-	public void deve_retornar_agencia_com_dv_e_numero_da_conta_sem_dv(){
-		ContaBancaria conta = ContaBancariaBuilder.defaultValue();
-		conta.setNumeroDaConta(new NumeroDaConta(conta.getNumeroDaConta().getCodigoDaConta()));
-		
-		assertThat(getTextoAgenciaCodigoCedente(conta), equalTo("1234-1 / 123456"));
-	}
+  @Test
+  public void deve_retornar_agencia_sem_dv_e_numero_da_conta_com_dv() {
+    ContaBancaria conta = ContaBancariaBuilder.defaultValue();
+    conta.setAgencia(new Agencia(conta.getAgencia().getCodigo()));
 
-	@Test
-	public void deve_retornar_agencia_sem_dv_e_numero_da_conta_sem_dv(){
-		ContaBancaria conta = ContaBancariaBuilder.defaultValue();
-		conta.setAgencia(new Agencia(conta.getAgencia().getCodigo()));
-		conta.setNumeroDaConta(new NumeroDaConta(conta.getNumeroDaConta().getCodigoDaConta()));
-		
-		assertThat(getTextoAgenciaCodigoCedente(conta), equalTo("1234 / 123456"));
-	}
-	
-	@Test
-	public void deve_nao_gerar_exceptions_quando_agencia_ausente(){
-		ContaBancaria conta = ContaBancariaBuilder.defaultValue();
-		conta.setAgencia(null);
-		
-		assertThat(getTextoAgenciaCodigoCedente(conta), equalTo("123456-0"));
-	}
+    assertThat(getTextoAgenciaCodigoCedente(conta), equalTo("1234 / 123456-0"));
+  }
 
-	@Test
-	public void deve_nao_gerar_exceptions_quando_conta_ausente(){
-		ContaBancaria conta = ContaBancariaBuilder.defaultValue();
-		conta.setNumeroDaConta(null);
-		
-		assertThat(getTextoAgenciaCodigoCedente(conta), equalTo("1234-1"));
-	}
+  @Test
+  public void deve_retornar_agencia_com_dv_e_numero_da_conta_sem_dv() {
+    ContaBancaria conta = ContaBancariaBuilder.defaultValue();
+    // conta.setNumeroDaConta(new
+    // NumeroDaConta(conta.getNumeroDaConta().getCodigoDaConta()));
+    conta.setCodigoCedente(new CodigoCedente(conta.getCodigoCedente().getCodigoCedente()));
+
+    assertThat(getTextoAgenciaCodigoCedente(conta), equalTo("1234-1 / 123456"));
+  }
+
+  @Test
+  public void deve_retornar_agencia_sem_dv_e_numero_da_conta_sem_dv() {
+    ContaBancaria conta = ContaBancariaBuilder.defaultValue();
+    conta.setAgencia(new Agencia(conta.getAgencia().getCodigo()));
+    // conta.setNumeroDaConta(new
+    // NumeroDaConta(conta.getNumeroDaConta().getCodigoDaConta()));
+    conta.setCodigoCedente(new CodigoCedente(conta.getCodigoCedente().getCodigoCedente()));
+
+    assertThat(getTextoAgenciaCodigoCedente(conta), equalTo("1234 / 123456"));
+  }
+
+  @Test
+  public void deve_nao_gerar_exceptions_quando_agencia_ausente() {
+    ContaBancaria conta = ContaBancariaBuilder.defaultValue();
+    conta.setAgencia(null);
+
+    assertThat(getTextoAgenciaCodigoCedente(conta), equalTo("123456-0"));
+  }
+
+  @Test
+  public void deve_nao_gerar_exceptions_quando_conta_ausente() {
+    ContaBancaria conta = ContaBancariaBuilder.defaultValue();
+    // conta.setNumeroDaConta(null);
+    conta.setCodigoCedente(null);
+
+    assertThat(getTextoAgenciaCodigoCedente(conta), equalTo("1234-1"));
+  }
 
 }
